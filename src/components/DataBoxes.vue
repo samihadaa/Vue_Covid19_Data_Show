@@ -6,11 +6,11 @@
 
             <div class="text-2xl mb-4 text-white">
                 <span class="font-bold text-white">New:</span>
-                {{ stats.NewConfirmed }}
+                {{ NumberWithComas(stats.NewConfirmed) }}
             </div>
             <div class="text-2xl mb-4 text-white">
                 <span class="font-bold text-white">Total:</span>
-                {{ stats.TotalConfirmed }}
+                {{ NumberWithComas(stats.TotalConfirmed) }}
             </div>
         </div>
 
@@ -20,11 +20,11 @@
 
             <div class="text-2xl mb-4 text-white">
                 <span class="font-bold text-white">New:</span>
-                {{ stats.NewDeaths }}
+                {{ NumberWithComas(stats.NewDeaths) }}
             </div>
             <div class="text-2xl mb-4 text-white">
                 <span class="font-bold text-white">Total:</span>
-                {{ stats.TotalDeaths }}
+                {{ NumberWithComas(stats.TotalDeaths) }}
             </div>
         </div>
     </div>
@@ -35,11 +35,11 @@
 
         <div class="text-2xl mb-4 text-white">
             <span class="font-bold text-white">New:</span>
-            {{ stats.NewRecovered }}
+            {{ NumberWithComas(stats.NewRecovered) }}
         </div>
         <div class="text-2xl mb-4 text-white">
             <span class="font-bold text-white">Total:</span>
-            {{ stats.TotalRecovered }}
+            {{ NumberWithComas(stats.TotalRecovered) }}
         </div>
     </div>
 
@@ -49,5 +49,10 @@
 export default {
     name: 'DataBoxes',
     props: ['stats'],
+methods: {
+    NumberWithComas(x){
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    }
+},
 }
 </script>
